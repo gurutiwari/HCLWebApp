@@ -821,8 +821,6 @@ module.exports = "<p>\n  test-ws works!\n</p>\n"
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_socket_io_client__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestWsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -834,14 +832,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var TestWsComponent = (function () {
     function TestWsComponent() {
         //private url ='wss://hclmotorwebapplication.azurewebsites.net';
         this.url = 'wss://' + location.host;
         console.log("Log for Wss: " + this.url);
-        this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__(this.url);
-        console.log("connected...");
+        //   this.socket = io(this.url);
+        //   console.log("connected...");
+        var ws = new WebSocket('wss://' + location.host);
+        ws.onopen = function () {
+            console.log('Successfully connect WebSocket');
+        };
     }
     TestWsComponent.prototype.ngOnInit = function () {
     };
