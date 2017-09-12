@@ -846,6 +846,9 @@ var TestWsComponent = (function () {
         ws.onerror = function (err) {
             console.log(err);
         };
+        ws.onmessage = function (message) {
+            console.log('receive message' + message.data);
+        };
     }
     TestWsComponent.prototype.ngOnInit = function () {
     };
