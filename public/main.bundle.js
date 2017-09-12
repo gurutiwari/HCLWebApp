@@ -843,6 +843,9 @@ var TestWsComponent = (function () {
         ws.onopen = function () {
             console.log('Successfully connect WebSocket');
         };
+        ws.onerror = function (err) {
+            console.log(err);
+        };
     }
     TestWsComponent.prototype.ngOnInit = function () {
     };
