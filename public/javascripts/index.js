@@ -8,7 +8,7 @@ $(document).ready(function () {
       {
         fill: false,
         label: 'Leakage Current',
-        yAxisID: 'LeakageCurrent',
+        yAxisID: 'Temperature',
         borderColor: "rgba(255, 204, 0, 1)",
         pointBoarderColor: "rgba(255, 204, 0, 1)",
         backgroundColor: "rgba(255, 204, 0, 0.4)",
@@ -19,7 +19,7 @@ $(document).ready(function () {
       {
         fill: false,
         label: 'Voltage',
-        yAxisID: 'Voltage',
+        yAxisID: 'Humidity',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
         backgroundColor: "rgba(24, 120, 240, 0.4)",
@@ -38,15 +38,15 @@ $(document).ready(function () {
     },
     scales: {
       yAxes: [{
-        id: '',
+        id: 'Temperature',
         type: 'linear',
         scaleLabel: {
-          labelString: 'LeakageCurrent',
+          labelString: 'Leakage Current',
           display: true
         },
         position: 'left',
       }, {
-          id: 'Voltage',
+          id: 'Humidity',
           type: 'linear',
           scaleLabel: {
             labelString: 'Voltage',
@@ -67,7 +67,6 @@ $(document).ready(function () {
   });
 
   var ws = new WebSocket('wss://' + location.host);
-  console.log('wss://' + location.host);
   ws.onopen = function () {
     console.log('Successfully connect WebSocket');
   }
