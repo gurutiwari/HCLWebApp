@@ -7,8 +7,8 @@ $(document).ready(function () {
     datasets: [
       {
         fill: false,
-        label: 'Temperature',
-        yAxisID: 'Temperature',
+        label: 'Leakage Current',
+        yAxisID: 'LeakageCurrent',
         borderColor: "rgba(255, 204, 0, 1)",
         pointBoarderColor: "rgba(255, 204, 0, 1)",
         backgroundColor: "rgba(255, 204, 0, 0.4)",
@@ -18,8 +18,8 @@ $(document).ready(function () {
       },
       {
         fill: false,
-        label: 'Humidity',
-        yAxisID: 'Humidity',
+        label: 'Voltage',
+        yAxisID: 'Voltage',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
         backgroundColor: "rgba(24, 120, 240, 0.4)",
@@ -33,23 +33,23 @@ $(document).ready(function () {
   var basicOption = {
     title: {
       display: true,
-      text: 'Temperature & Humidity Real-time Data',
+      text: 'Leakage Current & Voltage Real-time Data',
       fontSize: 36
     },
     scales: {
       yAxes: [{
-        id: 'Temperature',
+        id: '',
         type: 'linear',
         scaleLabel: {
-          labelString: 'Temperature(C)',
+          labelString: 'LeakageCurrent',
           display: true
         },
         position: 'left',
       }, {
-          id: 'Humidity',
+          id: 'Voltage',
           type: 'linear',
           scaleLabel: {
-            labelString: 'Humidity(%)',
+            labelString: 'Voltage',
             display: true
           },
           position: 'right'
@@ -67,6 +67,7 @@ $(document).ready(function () {
   });
 
   var ws = new WebSocket('wss://' + location.host);
+  console.log('wss://' + location.host);
   ws.onopen = function () {
     console.log('Successfully connect WebSocket');
   }
