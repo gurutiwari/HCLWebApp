@@ -837,7 +837,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TestWsComponent = (function () {
     function TestWsComponent() {
-        this.url = 'wss://hclmotorwebapplication.azurewebsites.net';
+        //private url ='wss://hclmotorwebapplication.azurewebsites.net';
+        this.url = 'wss://' + location.host;
         console.log("Log for Wss: " + this.url);
         this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__(this.url);
         console.log("connected...");
