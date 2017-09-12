@@ -1,31 +1,31 @@
 $(document).ready(function () {
   var timeData = [],
-    temperatureData = [],
-    humidityData = [];
+    leakageCurrentData = [],
+    voltageData = [];
   var data = {
     labels: timeData,
     datasets: [
       {
         fill: false,
         label: 'Leakage Current',
-        yAxisID: 'Temperature',
+        yAxisID: 'leakageCurrent',
         borderColor: "rgba(255, 204, 0, 1)",
         pointBoarderColor: "rgba(255, 204, 0, 1)",
         backgroundColor: "rgba(255, 204, 0, 0.4)",
         pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
         pointHoverBorderColor: "rgba(255, 204, 0, 1)",
-        data: temperatureData
+        data: leakageCurrentData
       },
       {
         fill: false,
         label: 'Voltage',
-        yAxisID: 'Humidity',
+        yAxisID: 'voltage',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
         backgroundColor: "rgba(24, 120, 240, 0.4)",
         pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
         pointHoverBorderColor: "rgba(24, 120, 240, 1)",
-        data: humidityData
+        data: voltageData
       }
     ]
   }
@@ -38,7 +38,7 @@ $(document).ready(function () {
     },
     scales: {
       yAxes: [{
-        id: 'Temperature',
+        id: 'leakageCurrent',
         type: 'linear',
         scaleLabel: {
           labelString: 'Leakage Current',
@@ -46,7 +46,7 @@ $(document).ready(function () {
         },
         position: 'left',
       }, {
-          id: 'Humidity',
+          id: 'voltage',
           type: 'linear',
           scaleLabel: {
             labelString: 'Voltage',
@@ -74,24 +74,24 @@ $(document).ready(function () {
     console.log('receive message' + message.data);
     try {
       var obj = JSON.parse(message.data);
-      if(!obj.time || !obj.temperature) {
+      if(!obj.time || !obj.leakageCurrent) {
         return;
       }
       timeData.push(obj.time);
-      temperatureData.push(obj.temperature);
+      leakageCurrentData.push(obj.leakageCurrent);
       // only keep no more than 50 points in the line chart
       const maxLen = 50;
       var len = timeData.length;
       if (len > maxLen) {
         timeData.shift();
-        temperatureData.shift();
+        leakageCurrentData.shift();
       }
 
-      if (obj.humidity) {
-        humidityData.push(obj.humidity);
+      if (obj.voltage) {
+        voltageData.push(obj.voltage);
       }
-      if (humidityData.length > maxLen) {
-        humidityData.shift();
+      if (voltageData.length > maxLen) {
+        voltageData.shift();
       }
 
       myLineChart.update();
