@@ -1961,7 +1961,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var GraphService = (function () {
     function GraphService() {
-        this.url = 'wss://' + location.host;
+        //this.url = 'wss://' + location.host;
+	 this.url ='wss://hclmotorwebapplication.azurewebsites.net';
     }
     GraphService.prototype.sendMessage = function (message) {
         this.socket.emit('add-message', message);
