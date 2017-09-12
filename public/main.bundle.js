@@ -377,7 +377,7 @@ var _a;
 /***/ "../../../../../src/app/Components/motor/motor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n  <form name=\"formSend\" (ngSubmit)=\"sendMessage()\">\n<input type=\"text\" [(ngModel)]=\"message\" name=\"message\">{{message}}\n<button type=\"submit\" name =\"submit\" class=\"btn btn-success\">Submit</button>\n  </form>\n\n"
+module.exports = "\n  <form name=\"formSend\" (ngSubmit)=\"sendMessage()\">\n<input type=\"text\" [(ngModel)]=\"message\" name=\"message\">{{message}}\n<button type=\"submit\" name =\"submit\" class=\"btn btn-success\">Submit</button>\n\n\n  </form>\n\n"
 
 /***/ }),
 
@@ -788,6 +788,75 @@ StationlistComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=stationlist.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/Components/test-ws/test-ws.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/Components/test-ws/test-ws.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  test-ws works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/Components/test-ws/test-ws.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_socket_io_client__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestWsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TestWsComponent = (function () {
+    function TestWsComponent() {
+        //private url ='wss://hclmotorwebapplication.azurewebsites.net';
+        this.url = 'wss://' + location.host;
+        console.log("Log for Wss: " + this.url);
+        this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__(this.url);
+        console.log("connected...");
+    }
+    TestWsComponent.prototype.ngOnInit = function () {
+    };
+    return TestWsComponent;
+}());
+TestWsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-test-ws',
+        template: __webpack_require__("../../../../../src/app/Components/test-ws/test-ws.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/Components/test-ws/test-ws.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], TestWsComponent);
+
+//# sourceMappingURL=test-ws.component.js.map
 
 /***/ }),
 
@@ -1315,6 +1384,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__Components_motor_motor_component__ = __webpack_require__("../../../../../src/app/Components/motor/motor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__Components_screen_title_screen_title_component__ = __webpack_require__("../../../../../src/app/Components/screen-title/screen-title.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__Components_stationlist_stationlist_component__ = __webpack_require__("../../../../../src/app/Components/stationlist/stationlist.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__Components_test_ws_test_ws_component__ = __webpack_require__("../../../../../src/app/Components/test-ws/test-ws.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1355,12 +1425,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [{
         path: 'graph',
         component: __WEBPACK_IMPORTED_MODULE_7__evolution_evolution_component__["a" /* EvolutionComponent */]
     }, {
         path: 'motor',
-        component: __WEBPACK_IMPORTED_MODULE_29__Components_motor_motor_component__["a" /* MotorComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_32__Components_test_ws_test_ws_component__["a" /* TestWsComponent */]
     }, {
         path: 'MotorManagement',
         component: __WEBPACK_IMPORTED_MODULE_12__motor_management_motor_management_component__["a" /* MotorManagementComponent */]
@@ -1403,7 +1474,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_27__Components_notifications_notifications_component__["a" /* NotificationsComponent */],
             __WEBPACK_IMPORTED_MODULE_31__Components_stationlist_stationlist_component__["a" /* StationlistComponent */],
             __WEBPACK_IMPORTED_MODULE_29__Components_motor_motor_component__["a" /* MotorComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__Components_screen_title_screen_title_component__["a" /* ScreenTitleComponent */]
+            __WEBPACK_IMPORTED_MODULE_30__Components_screen_title_screen_title_component__["a" /* ScreenTitleComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__Components_test_ws_test_ws_component__["a" /* TestWsComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1961,8 +2033,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var GraphService = (function () {
     function GraphService() {
-        //this.url = 'wss://' + location.host;
-	 this.url ='wss://hclmotorwebapplication.azurewebsites.net';
+        //private url = 'wss://' + location.host;
+        this.url = 'wss://hclmotorwebapplication.azurewebsites.net';
     }
     GraphService.prototype.sendMessage = function (message) {
         this.socket.emit('add-message', message);
@@ -1971,6 +2043,7 @@ var GraphService = (function () {
     GraphService.prototype.getMessages = function () {
         var _this = this;
         var observable = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"](function (observer) {
+            console.log('Connection URL:' + _this.url);
             _this.socket = __WEBPACK_IMPORTED_MODULE_2_socket_io_client__(_this.url);
             _this.socket.on('message', function (data) {
                 console.log("Message received..." + JSON.stringify(data));
