@@ -37,4 +37,3 @@ Go to [Azure Portal](https://portal.azure.com) to create your own Azure web app 
   * `set Azure.IoT.IoTHub.ConsumerGroup=<your consumer group name>`
 * `npm install`
 * `npm start`
-"# HCLWebApp" 

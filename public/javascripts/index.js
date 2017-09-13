@@ -1,31 +1,31 @@
 $(document).ready(function () {
   var timeData = [],
-    leakageCurrentData = [],
-    voltageData = [];
+    temperatureData = [],
+    humidityData = [];
   var data = {
     labels: timeData,
     datasets: [
       {
         fill: false,
-        label: 'Leakage Current',
-        yAxisID: 'leakageCurrent',
+        label: 'Temperature',
+        yAxisID: 'Temperature',
         borderColor: "rgba(255, 204, 0, 1)",
         pointBoarderColor: "rgba(255, 204, 0, 1)",
         backgroundColor: "rgba(255, 204, 0, 0.4)",
         pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
         pointHoverBorderColor: "rgba(255, 204, 0, 1)",
-        data: leakageCurrentData
+        data: temperatureData
       },
       {
         fill: false,
-        label: 'Voltage',
-        yAxisID: 'voltage',
+        label: 'Humidity',
+        yAxisID: 'Humidity',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
         backgroundColor: "rgba(24, 120, 240, 0.4)",
         pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
         pointHoverBorderColor: "rgba(24, 120, 240, 1)",
-        data: voltageData
+        data: humidityData
       }
     ]
   }
@@ -33,23 +33,23 @@ $(document).ready(function () {
   var basicOption = {
     title: {
       display: true,
-      text: 'Leakage Current & Voltage Real-time Data',
+      text: 'Temperature & Humidity Real-time Data',
       fontSize: 36
     },
     scales: {
       yAxes: [{
-        id: 'leakageCurrent',
+        id: 'Temperature',
         type: 'linear',
         scaleLabel: {
-          labelString: 'Leakage Current',
+          labelString: 'Temperature(C)',
           display: true
         },
         position: 'left',
       }, {
-          id: 'voltage',
+          id: 'Humidity',
           type: 'linear',
           scaleLabel: {
-            labelString: 'Voltage',
+            labelString: 'Humidity(%)',
             display: true
           },
           position: 'right'
@@ -65,7 +65,7 @@ $(document).ready(function () {
     data: data,
     options: basicOption
   });
-  console.log('wss://' + location.host);
+
   var ws = new WebSocket('wss://' + location.host);
   ws.onopen = function () {
     console.log('Successfully connect WebSocket');
@@ -74,24 +74,24 @@ $(document).ready(function () {
     console.log('receive message' + message.data);
     try {
       var obj = JSON.parse(message.data);
-      if(!obj.time || !obj.leakageCurrent) {
+      if(!obj.time || !obj.temperature) {
         return;
       }
       timeData.push(obj.time);
-      leakageCurrentData.push(obj.leakageCurrent);
+      temperatureData.push(obj.temperature);
       // only keep no more than 50 points in the line chart
       const maxLen = 50;
       var len = timeData.length;
       if (len > maxLen) {
         timeData.shift();
-        leakageCurrentData.shift();
+        temperatureData.shift();
       }
 
-      if (obj.voltage) {
-        voltageData.push(obj.voltage);
+      if (obj.humidity) {
+        humidityData.push(obj.humidity);
       }
-      if (voltageData.length > maxLen) {
-        voltageData.shift();
+      if (humidityData.length > maxLen) {
+        humidityData.shift();
       }
 
       myLineChart.update();
